@@ -19,21 +19,21 @@ function expect(target) {
     toBe: function (expectation) {
       if (target === expectation) {
         console.log(
-          '\n     %cPASSED',
-          'color:green;',
-          'Expected',
+          "\n     %cPASSED",
+          "color:green;",
+          "Expected",
           target,
-          'to be',
+          "to be",
           expectation
         )
         return true
       } else {
         console.log(
-          '\n     %cFAILED',
-          'color:red;',
-          'Expected',
+          "\n     %cFAILED",
+          "color:red;",
+          "Expected",
           target,
-          'to be',
+          "to be",
           expectation
         )
         return false
@@ -49,10 +49,30 @@ function expect(target) {
 // \___/\____/_/ /_/____/\__/_/   \__,_/\___/\__/\____/_/  /____/
 //
 // Only add code to *THIS* section!
+function Dog(color, hungry, status) {
+  this.color = "black"
+  this.hungry = true
+  this.status = "normal"
+}
 
-// ????????
-// ????????
-// ????????
+function Human(a) {
+  this.a = a
+}
+
+Human.prototype.pet = function (Dog) {
+  return (Dog.status = "happy")
+}
+
+Human.prototype.pet = function (Dog) {
+  return (Dog.status = "happy")
+}
+// it("should make Sadie happy when Mason pets her", function () {
+//   expect(sadie.status).toBe("normal")
+//   mason.pet(sadie)
+//   expect(sadie.status).toBe("happy")
+// })
+
+// consts newVariable = new whoKnows(parameter1, parameter2) // new objects
 
 //        __
 //   ____/ /___  ____ ______
@@ -62,12 +82,12 @@ function expect(target) {
 //            /____/
 
 var sadie = new Dog({
-  color: 'black',
+  color: "black",
   hungry: false,
 })
 
 var moonshine = new Dog({
-  color: 'blue-red',
+  color: "blue-red",
 })
 
 var atticus = new Dog()
@@ -93,22 +113,30 @@ var julia = new Human({
 // Don't edit this section. Instead make these tests pass by writing
 // constructors in the constructor section above ;D
 
-it('should make Sadie happy when Mason pets her', function () {
-  expect(sadie.status).toBe('normal')
+// function it(description, contents) {
+//   console.log('\n\n"It ' + description + '"')
+//   contents()
+// }
+
+it("should make Sadie happy when Mason pets her", function () {
+  expect(sadie.status).toBe("normal")
   mason.pet(sadie)
-  expect(sadie.status).toBe('happy')
+  expect(sadie.status).toBe("happy")
+})
+// expect() -function
+//Expected normal to be normal
+//Expected happy to be happy
+
+it("should make Sadie black", function () {
+  expect(sadie.color).toBe("black")
 })
 
-it('should make Sadie black', function () {
-  expect(sadie.color).toBe('black')
-})
-
-it('should be make Moonshine hungry and Sadie not hungry', function () {
+it("should be make Moonshine hungry and Sadie not hungry", function () {
   expect(moonshine.hungry).toBe(true)
   expect(sadie.hungry).toBe(false)
 })
 
-it('should make Moonshine no longer hungry when you feed him', function () {
+it("should make Moonshine no longer hungry when you feed him", function () {
   julia.feed(moonshine)
   expect(moonshine.hungry).toBe(false)
 })
@@ -119,7 +147,7 @@ it("should not affect Atticus and Moonshine's owner properties when setting Maso
   expect(atticus.owner).toBe(undefined)
 })
 
-it('should make Julia cool and Mason not cool', function () {
+it("should make Julia cool and Mason not cool", function () {
   sadie.owner = mason
   expect(julia.cool).toBe(true)
   expect(mason.cool).toBe(false)
