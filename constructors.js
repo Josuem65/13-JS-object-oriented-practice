@@ -49,29 +49,33 @@ function expect(target) {
 // \___/\____/_/ /_/____/\__/_/   \__,_/\___/\__/\____/_/  /____/
 //
 // Only add code to *THIS* section!
-function Dog(color, hungry, status) {
-  this.color = "black"
-  this.hungry = true
+function Dog(obj) {
+  // this.color = "black"
   this.status = "normal"
+  this.hungry = true
+  if (obj !== undefined && obj.hungry !== undefined) {
+    this.hungry = obj.hungry
+  }
+  if (obj === undefined) {
+    this.color = null
+  } else {
+    this.color = obj.color
+  }
 }
-
 function Human(a) {
-  this.a = a
+  this.cool = false
+  if (a !== undefined && a.cool !== undefined) {
+    this.cool = a.cool
+  }
 }
 
 Human.prototype.pet = function (Dog) {
   return (Dog.status = "happy")
 }
 
-Human.prototype.pet = function (Dog) {
-  return (Dog.status = "happy")
+Human.prototype.feed = function (Dog) {
+  return (Dog.hungry = false)
 }
-// it("should make Sadie happy when Mason pets her", function () {
-//   expect(sadie.status).toBe("normal")
-//   mason.pet(sadie)
-//   expect(sadie.status).toBe("happy")
-// })
-
 // consts newVariable = new whoKnows(parameter1, parameter2) // new objects
 
 //        __
@@ -123,9 +127,6 @@ it("should make Sadie happy when Mason pets her", function () {
   mason.pet(sadie)
   expect(sadie.status).toBe("happy")
 })
-// expect() -function
-//Expected normal to be normal
-//Expected happy to be happy
 
 it("should make Sadie black", function () {
   expect(sadie.color).toBe("black")
